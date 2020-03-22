@@ -27,7 +27,4 @@
 - Microsoft.AspNetCore
 - Microsoft.EntityFrameworkCore
 
-*Screenshot*
-![People Search Application][appscreenshot]
 
-[appscreenshot]: https://github.com/SushiGuy/health-catalyst-test/blob/master/PeopleSearch/PeopleSearchScreenshot.PNG?raw=true "Web App Screenshot"
