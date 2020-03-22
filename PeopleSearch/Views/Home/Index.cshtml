@@ -1,0 +1,72 @@
+﻿@using PeopleSearch.Models
+@model List<Person>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<script>
+    $(function () {
+        $('#peopleList').load('@Url.Action("SearchResult", "Home")');
+        $('#searchValue').on('keyup', function () {
+            if ($(this).val() == '') {   //reset values
+                preSearch();
+            }
+        });
+        $('#myForm').on('submit', function () {
+            preSearch();
+            return false;
+        });
+    });
+
+    function preSearch() {
+        $('#peopleList').html('');
+        $('#spinner').fadeIn(500);
+        setTimeout('doSearch();', 1000);
+    }
+
+    function doSearch() {
+
+        $.ajax({
+
+                method: 'POST',
+                url: '@Url.Action("SearchResult", "Home")',
+                data: $('#myForm').serialize()
+            })
+            .done(function (retData) {
+                $('#peopleList').html(retData);
+            })
+            .fail(function (jqXHR) {
+                $('#errorMessage').html(jqXHR.status).fadeIn();
+            })
+            .always(function () {
+                $('#spinner').hide();
+            });
+    }
+</script>
+
+<h1>Search</h1>
+
+<form class="form-inline" id="myForm" action="@Url.Action("Index", "Home")">
+    <div class="input-group">
+        <input type="text" class="form-control" id="searchValue" name="searchValue"
+                placeholder="Enter Name or portion of name" style="width: 220px;">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="submit" id="search-button">Search!</button>
+        </span>
+    </div>
+</form>
+
+<h1>People</h1>
+
+<div id="peopleList">
+
+</div>
+
+<div id="errorMessage" style="display: none;">
+
+</div>
+
+<div id="spinner" style="display: none;">
+    <img src="~/images/spinner.gif"
+         style="height: 64px; width: 64px;" />
+</div>

@@ -1,0 +1,38 @@
+﻿@using PeopleSearch.Models
+@model List<Person>
+@{ 
+    Layout = null;
+}
+
+@if (Model.Any())
+{
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Age</th>
+                    <th>Interests</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (Person person in Model)
+                {
+                    <tr>
+                        <td><img src="~/images/jeremy.png" style="height: 24px; width: 24px;" /></td>
+                        <td>@person.FullName</td>
+                        <td>@person.Address</td>
+                        <td>@person.Age</td>
+                        <td>@person.Interests</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div>No people</div>
+}
