@@ -5,6 +5,7 @@
 }
 
 <script>
+// function to load the data
     $(function () {
         $('#peopleList').load('@Url.Action("SearchResult", "Home")');
         $('#searchValue').on('keyup', function () {
