@@ -26,12 +26,7 @@ namespace PeopleSearch.Controllers
             {
                 personList = _context.Person.ToList();
 
-                //Clear database for testing
-                //foreach (Person p in personList)
-                //{
-                //    _context.Person.Remove(p);
-                //}
-                //_context.SaveChanges();
+   
             }
             else
             {
