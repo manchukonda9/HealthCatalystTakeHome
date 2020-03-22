@@ -36,7 +36,7 @@ namespace PeopleSearchUnitTest
         {
             // Arrange
             InitializeContext();
-            string searchValue = "liz";
+            string searchValue = "puji";
             var mockPersonDbSet = GetQueryableMockPersonDbSet();
             var mockContext = new Mock<PersonContext>();
             mockContext.Setup(m => m.Person).Returns(mockPersonDbSet.Object);
@@ -64,10 +64,10 @@ namespace PeopleSearchUnitTest
         {
             return new Person
             {
-                Address = "123 S St",
-                Age = 10,
-                FullName = "Liz Parker",
-                Interests = "Soccer",
+                Address = "Guntur India",
+                Age = 20,
+                FullName = "Puji Manchu",
+                Interests = "Tik Tok",
                 PersonId = 1
             };
         }
